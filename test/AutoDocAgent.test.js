@@ -12,7 +12,7 @@ describe('AutoDocAgent', function () {
 
     agent
       .host('something.test')
-      .get('/')
+      .get('/?a=1&b=2')
       .send('hello')
       .end(function (err, res) {
         if (err) return done(err);
@@ -20,20 +20,21 @@ describe('AutoDocAgent', function () {
         expect(res.body.hostname).toEqual('something.test')
 
         // Get docMeta
-        const docMeta = agent.getDocMeta('get', '/')
+        const docMeta = agent.getDocMeta('get', '/?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
 
         // Request assertion
         expect(request.method).toEqual('get')
-        expect(request.url).toEqual('/')
+        expect(request.url).toEqual('/?a=1&b=2')
         expect(request.body).toEqual('hello')
 
         // Response assertion
         expect(response.body).toEqual({hostname: 'something.test'})
 
+        agent.render()
         done();
-      });
+      })
   });
 });
