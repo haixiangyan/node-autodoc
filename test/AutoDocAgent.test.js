@@ -1,37 +1,5 @@
 import express from 'express'
-import request from '../lib'
-import AutoDocAgent from '../lib/AutoDocAgent'
-
-describe('request(app)', () => {
-  it('should get obj.docMeta from get request', (done) => {
-    const app = express();
-
-    app.get('/', function (req, res) {
-      res.send('hey');
-    });
-
-    const obj = request(app)
-    obj.get('/')
-      .send({name: 'Jack', password: '123456'})
-      .end(function (err, res) {
-        // supertest assertion
-        expect(res.status).toEqual(200)
-        expect(res.text).toEqual('hey')
-
-        const {request, response} = obj.docMeta
-
-        // Request assertion
-        expect(request.url).toEqual('/')
-        expect(request.method).toEqual('get')
-        expect(request.body).toEqual({name: 'Jack', password: '123456'})
-
-        // Response Assertion
-        expect(response.text).toEqual('hey')
-
-        done();
-      })
-  })
-})
+import AutoDocAgent from '../lib/index'
 
 describe('AutoDocAgent', function () {
   it('should get correct docMeta from get request', function (done) {
