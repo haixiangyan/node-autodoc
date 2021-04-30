@@ -29,7 +29,7 @@ describe('request(app)', () => {
         expect(response.text).toEqual('hey')
 
         done();
-      });
+      })
   })
 })
 
