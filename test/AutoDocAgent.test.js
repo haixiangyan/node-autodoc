@@ -1,25 +1,32 @@
 import express from 'express'
 import AutoDocAgent from '../lib/index'
+import {ejsTemplateDir, outputHtmlDir} from '../lib/constants'
 
 const app = express();
-const agent = new AutoDocAgent(app);
+const agent = new AutoDocAgent(app, {
+  outputDir: outputHtmlDir,
+  templateDir: ejsTemplateDir,
+  outputFilename: 'test.html',
+  title: 'Users API Documentation',
+  description: 'A small and simple documentation for how to deal with /users api'
+});
 
-app.get('/', function (req, res) {
+app.get('/users', function (req, res) {
   res.send({ msg: 'get success', code: 0 });
 });
 
-app.post('/', function (req, res) {
+app.post('/users', function (req, res) {
   res.json({ msg: 'post success', code: 0 })
 })
 
 describe('AutoDocAgent', function () {
   it('should get correct docMeta from get request', function (done) {
     agent
-      .get('/?a=1&b=2', { title: 'Get all users', description: 'Send a get request to get all users from the server' })
+      .get('/users?a=1&b=2', { title: 'Get all users', description: 'Send a get request to get all users from the server' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('get', '/?a=1&b=2')
+        const docMeta = agent.getDocMeta('get', '/users?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -30,7 +37,7 @@ describe('AutoDocAgent', function () {
 
         // Request assertion
         expect(request.method).toEqual('get')
-        expect(request.url).toEqual('/?a=1&b=2')
+        expect(request.url).toEqual('/users?a=1&b=2')
         expect(request.params).toEqual({a: '1', b: '2'});
 
         // Response assertion
@@ -42,12 +49,12 @@ describe('AutoDocAgent', function () {
 
   it('should get correct docMeta from post request', function (done) {
     agent
-      .post('/?a=1&b=2', { title: 'Post a user', description: 'Create a user and add it to the database' })
+      .post('/users?a=1&b=2', { title: 'Post a user', description: 'Create a user and add it to the database' })
       .send({ name: 'Jack', password: '123' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('post', '/?a=1&b=2')
+        const docMeta = agent.getDocMeta('post', '/users?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -58,7 +65,7 @@ describe('AutoDocAgent', function () {
 
         // Request assertion
         expect(request.method).toEqual('post')
-        expect(request.url).toEqual('/?a=1&b=2')
+        expect(request.url).toEqual('/users?a=1&b=2')
         expect(request.body).toEqual({ name: 'Jack', password: '123' })
         expect(request.params).toEqual({a: '1', b: '2'});
 
@@ -68,5 +75,5 @@ describe('AutoDocAgent', function () {
       })
   });
 
-  afterAll(() => agent.render({ outputFilename: 'test.html' }))
+  afterAll(() => agent.render())
 });
