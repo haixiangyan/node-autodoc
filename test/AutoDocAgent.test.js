@@ -68,5 +68,5 @@ describe('AutoDocAgent', function () {
       })
   });
 
-  afterAll(() => agent.render())
+  afterAll(() => agent.render({ outputFilename: 'test.html' }))
 });
