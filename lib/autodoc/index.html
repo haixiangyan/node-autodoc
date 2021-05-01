@@ -3,6 +3,7 @@
 
     <div>
         <h2>Get all users</h2>
+        <p>Send a get request to get all users from the server</p>
 
         <!-- Request -->
         <h3>Request</h3>
@@ -16,13 +17,41 @@
 	&#34;b&#34;: &#34;2&#34;
 }</pre>
         <p>Body: </p>
-        <pre>hello</pre>
+        <pre></pre>
 
         <!-- Response -->
         <h3>Response</h3>
         <p>Body: </p>
         <pre>{
-	&#34;hostname&#34;: &#34;something.test&#34;
+	&#34;msg&#34;: &#34;get success&#34;,
+	&#34;code&#34;: 0
+}</pre>
+    </div>
+
+    <div>
+        <h2>Post a user</h2>
+        <p>Create a user and add it to the database</p>
+
+        <!-- Request -->
+        <h3>Request</h3>
+        <p>
+            <span>post</span>
+            <span>/?a=1&amp;b=2</span>
+        </p>
+        <p>Params: </p>
+        <pre>{
+	&#34;a&#34;: &#34;1&#34;,
+	&#34;b&#34;: &#34;2&#34;
+}</pre>
+        <p>Body: </p>
+        <pre>[object Object]</pre>
+
+        <!-- Response -->
+        <h3>Response</h3>
+        <p>Body: </p>
+        <pre>{
+	&#34;msg&#34;: &#34;post success&#34;,
+	&#34;code&#34;: 0
 }</pre>
     </div>
 
