@@ -29,6 +29,7 @@ describe('AutoDocAgent', function () {
         expect(request.method).toEqual('get')
         expect(request.url).toEqual('/?a=1&b=2')
         expect(request.body).toEqual('hello')
+        expect(request.params).toEqual({a: '1', b: '2'});
 
         // Response assertion
         expect(response.body).toEqual({hostname: 'something.test'})
