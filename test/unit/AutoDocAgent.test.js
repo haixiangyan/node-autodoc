@@ -14,8 +14,8 @@ describe('test some features of AutoDocAgent', () => {
     const files = fs.readdirSync(tempOutputDir);
     expect(files).toHaveLength(0);
 
-    fsExtra.outputFileSync(path.resolve(tempOutputDir, 'xxx.txt', 'hello'));
-    fsExtra.outputFileSync(path.resolve(tempOutputDir, 'yyy.txt', 'world'));
+    fsExtra.outputFileSync(path.resolve(tempOutputDir, 'xxx.txt'), 'hello');
+    fsExtra.outputFileSync(path.resolve(tempOutputDir, 'yyy.txt'), 'world');
 
     const twoFileList = fs.readdirSync(tempOutputDir);
     expect(twoFileList).toHaveLength(2);
