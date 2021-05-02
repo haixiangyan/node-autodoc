@@ -75,7 +75,7 @@ describe('test /users API', () => {
 
 The API doc page would be like this:
 
-<img width="500" src="screenshot/users.png"/>
+![](screenshot/users.png)
 
 In the end, call the `AutoDocAgent.renderIndex()` in the `teardown.js` file to render the home page.
 
@@ -102,7 +102,7 @@ module.exports = async () => {
 
 The home page would be like this:
 
-<img width="500" src="screenshot/home.png"/>
+![](screenshot/home.png)
 
 ## Example
 
