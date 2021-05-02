@@ -3,7 +3,6 @@ import AutoDocAgent from '../lib/index'
 
 const app = express();
 const agent = new AutoDocAgent(app, {
-  outputFilename: 'users.html',
   title: 'Users API Documentation',
   description: 'A small and simple documentation for how to deal with /users api'
 });
