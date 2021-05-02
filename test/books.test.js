@@ -1,28 +1,14 @@
-import express from 'express'
 import AutoDocAgent from '../lib/index'
-
-const app = express();
-const agent = new AutoDocAgent(app, {
-  title: 'books API Documentation',
-  description: 'A small and simple documentation for how to deal with /books api'
-});
-
-app.get('/books', function (req, res) {
-  res.send({ msg: 'get success', code: 0 });
-});
-
-app.post('/books', function (req, res) {
-  res.json({ msg: 'post success', code: 0 })
-})
+import {booksAgent} from './constants'
 
 describe('AutoDocAgent', function () {
   it('should get correct docMeta from get request', function (done) {
-    agent
+    booksAgent
       .get('/books?a=1&b=2', { title: 'Get all books', description: 'Send a get request to get all books from the server' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('get', '/books?a=1&b=2')
+        const docMeta = booksAgent.getDocMeta('get', '/books?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -44,13 +30,13 @@ describe('AutoDocAgent', function () {
   });
 
   it('should get correct docMeta from post request', function (done) {
-    agent
+    booksAgent
       .post('/books?a=1&b=2', { title: 'Post a user', description: 'Create a user and add it to the database' })
       .send({ name: 'Jack', password: '123' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('post', '/books?a=1&b=2')
+        const docMeta = booksAgent.getDocMeta('post', '/books?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -71,5 +57,5 @@ describe('AutoDocAgent', function () {
       })
   });
 
-  afterAll(() => agent.renderPage('books.html'))
+  afterAll(() => booksAgent.renderPage())
 });

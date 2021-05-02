@@ -1,28 +1,14 @@
-import express from 'express'
 import AutoDocAgent from '../lib/index'
-
-const app = express();
-const agent = new AutoDocAgent(app, {
-  title: 'Users API Documentation',
-  description: 'A small and simple documentation for how to deal with /users api'
-});
-
-app.get('/users', function (req, res) {
-  res.send({ msg: 'get success', code: 0 });
-});
-
-app.post('/users', function (req, res) {
-  res.json({ msg: 'post success', code: 0 })
-})
+import {usersAgent} from './constants'
 
 describe('AutoDocAgent', function () {
   it('should get correct docMeta from get request', function (done) {
-    agent
+    usersAgent
       .get('/users?a=1&b=2', { title: 'Get all users', description: 'Send a get request to get all users from the server' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('get', '/users?a=1&b=2')
+        const docMeta = usersAgent.getDocMeta('get', '/users?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -44,13 +30,13 @@ describe('AutoDocAgent', function () {
   });
 
   it('should get correct docMeta from post request', function (done) {
-    agent
+    usersAgent
       .post('/users?a=1&b=2', { title: 'Post a user', description: 'Create a user and add it to the database' })
       .send({ name: 'Jack', password: '123' })
       .end(function (err, res) {
         if (err) return done(err);
         // Get docMeta
-        const docMeta = agent.getDocMeta('post', '/users?a=1&b=2')
+        const docMeta = usersAgent.getDocMeta('post', '/users?a=1&b=2')
         expect(docMeta).not.toBeNull()
 
         const {request, response} = docMeta
@@ -71,5 +57,5 @@ describe('AutoDocAgent', function () {
       })
   });
 
-  afterAll(() => agent.renderPage('users.html'))
+  afterAll(() => usersAgent.renderPage('users.html'))
 });
