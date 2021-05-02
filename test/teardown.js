@@ -1,7 +1,7 @@
 import AutoDocAgent from '../lib';
 import {
   outputDir, templateDir, usersAgent, booksAgent,
-} from './constants';
+} from './utils/constants';
 
 const agents = [booksAgent, usersAgent];
 

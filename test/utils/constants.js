@@ -1,5 +1,5 @@
-import { ejsTemplateDir, outputHtmlDir } from '../lib/constants';
-import AutoDocAgent from '../lib';
+import { ejsTemplateDir, outputHtmlDir } from '../../lib/constants';
+import AutoDocAgent from '../../lib';
 import app from './app';
 
 export const templateDir = ejsTemplateDir;

@@ -1,4 +1,4 @@
-import { usersAgent } from './constants';
+import { usersAgent } from '../utils/constants';
 
 describe('AutoDocAgent', () => {
   it('should get correct docMeta from get request', (done) => {
