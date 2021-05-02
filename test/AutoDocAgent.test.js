@@ -75,5 +75,5 @@ describe('AutoDocAgent', function () {
       })
   });
 
-  afterAll(() => agent.render())
+  afterAll(() => agent.renderPage())
 });
