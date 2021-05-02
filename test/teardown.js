@@ -1,7 +1,9 @@
-import AutoDocAgent from '../lib'
-import {outputDir, templateDir, usersAgent, booksAgent} from './constants'
+import AutoDocAgent from '../lib';
+import {
+  outputDir, templateDir, usersAgent, booksAgent,
+} from './constants';
 
-const agents = [booksAgent, usersAgent]
+const agents = [booksAgent, usersAgent];
 
 module.exports = async () => {
   AutoDocAgent.renderIndex({
@@ -10,6 +12,6 @@ module.exports = async () => {
     author: 'Haixiang',
     agents,
     outputDir,
-    templateDir
-  })
-}
+    templateDir,
+  });
+};
