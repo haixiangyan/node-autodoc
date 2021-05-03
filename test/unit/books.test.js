@@ -1,6 +1,6 @@
 import { booksAgent } from '../utils/constants';
 
-describe('AutoDocAgent', () => {
+describe('/books API', () => {
   it('should get correct docMeta from get request', (done) => {
     booksAgent
       .get('/books?a=1&b=2', { title: 'Get all books', description: 'Send a get request to get all books from the server' })

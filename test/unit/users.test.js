@@ -1,6 +1,6 @@
 import { usersAgent } from '../utils/constants';
 
-describe('AutoDocAgent', () => {
+describe('/users API', () => {
   it('should get correct docMeta from get request', (done) => {
     usersAgent
       .get('/users?a=1&b=2', { title: 'Get all users', description: 'Send a get request to get all users from the server' })
