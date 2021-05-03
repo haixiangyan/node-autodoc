@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "test": "jest",
+    "build": "npx webpack",
     "coveralls": "coveralls < coverage/lcov.info",
     "release": "standard-version && npm publish"
   },
