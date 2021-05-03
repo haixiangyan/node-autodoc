@@ -4,6 +4,9 @@
 
 Check [this](http://yanhaixiang.com/node-autodoc/) out.
 
+Ugly, huh? You can also use customized templates or render function to generate the API documentation.
+[See this](https://github.com/Haixiang6123/node-autodoc#render-mode).
+
 ## Structure
 
 Here's the example structure:
