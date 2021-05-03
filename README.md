@@ -3,9 +3,16 @@
 [![Coverage Status](https://coveralls.io/repos/github/Haixiang6123/node-autodoc/badge.svg?branch=main)](https://coveralls.io/github/Haixiang6123/node-autodoc?branch=main)
 [![Build Status](https://www.travis-ci.com/Haixiang6123/node-autodoc.svg?branch=main)](https://www.travis-ci.com/Haixiang6123/node-autodoc)
 
-## What is this
+A test-driven generator for API documentation. Inspired by [autodoc](https://github.com/r7kamura/autodoc) and [supertest](https://www.npmjs.com/package/supertest).
 
-A unit test driven API documentation generator.
+## Why need this
+
+Some people are not happy to maintain the API documentation when dealing with the large project.
+Then, it causes so many confusions and problems when someone new to use previous APIs.
+
+This library is to generate a documentation by given the test cases.
+It renders the API documentation according to the input and output of each http request.
+
 
 ## How to use
 
@@ -106,17 +113,26 @@ The home page would be like this:
 
 ## Example
 
-You can check the example in the `test` folder.
+You can check the example in the `/example` folder.
 
 Here's the folder structure:
 
 ```
-├── setup.js // clear the output directory
-├── teardown.js // render home page
-├── unit
-│   ├── books.test.js // the /books API test case
-│   └── users.test.js // the /users API test case
-└── utils
-    ├── app.js // express web app
-    └── constants.js // some useful constants
+.
+├── app.js          // express web app
+├── autodoc         // documenation output directory
+├── bin             // start entry
+├── jest.config.js  // config, add the setup.js and tearndown.js to here
+├── public
+├── routes          // all your apis
+│   ├── books.js
+│   ├── index.js
+│   └── users.js
+├── test
+│   ├── setup.js    // clear the /autodoc directory first
+│   ├── unit        // unit test cases, each one will render an api doc page
+│   ├── utils       // some useful constants here
+│   └── teardown.js // render home page
+└── yarn.lock
+
 ```
