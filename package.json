@@ -14,7 +14,7 @@
     "clean": "rimraf dist/*",
     "test": "jest",
     "coveralls": "coveralls < coverage/lcov.info",
-    "release": "standard-version && npm run publish"
+    "release": "standard-version && npm publish"
   },
   "repository": {
     "type": "git",
