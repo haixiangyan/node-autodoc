@@ -13,6 +13,9 @@ Then, it causes so many confusions and problems when someone new to use previous
 This library is to generate a documentation by given the test cases.
 It renders the API documentation according to the input and output of each http request.
 
+## Work flow
+
+![](./screenshot/flow.png)
 
 ## How to use
 
@@ -113,12 +116,11 @@ The home page would be like this:
 
 ## Example
 
-You can check the example in the `/example` folder.
+There is also an example inside the repo. Check this folder [/example](https://github.com/Haixiang6123/node-autodoc/tree/main/example) out.
 
-Here's the folder structure:
+Here's the example structure:
 
 ```
-.
 ├── app.js          // express web app
 ├── autodoc         // documenation output directory
 ├── bin             // start entry
@@ -134,5 +136,83 @@ Here's the folder structure:
 │   ├── utils       // some useful constants here
 │   └── teardown.js // render home page
 └── yarn.lock
+```
 
+## API
+
+Most of the usages are same as [supertest](https://www.npmjs.com/package/supertest). Its APIs are really neat and simple.
+
+The extra APIs this library enhances are below.
+
+### AutoDocAgent
+
+```js
+const agent = new AutoDocAgent(
+  app,
+  {
+    outputFilename: 'users.html',
+    title: 'Users API Documentation',
+    description: 'A small and simple documentation for how to deal with /users api',
+    outputDir,
+    templateDir,
+  }
+)
+```
+
+#### AutoDocAgent
+
+| parameter | value |
+|---|---|
+| app | Your express app, or koa app |
+| options | Extends from supertest options |
+
+
+#### options
+
+| parameter | description |
+|---|---|
+| outputFilename | The file name of current api document |
+| outputDir | Current api document output directory |
+| templateDir | Ejs template directory. It will use the [default template](https://github.com/Haixiang6123/node-autodoc/tree/main/lib/templates) if ignore it |
+| title | Title of current api doc |
+| description | Description of current api doc |
+
+### AutoDocAgent.clear
+
+Clear the given `outputDir` directory.
+
+```js
+AutoDocAgent.clear(outputDir)
+```
+
+### AutoDocAgent.renderIndex
+
+Render the home page by given all agents.
+
+```js
+AutoDocAgent.renderIndex({
+  title: 'My API Documentation',
+  description: 'This is my first documentation for testing, haha~',
+  author: 'Haixiang',
+  agents,
+  outputDir,
+  templateDir,
+});
+```
+
+| parameter | value |
+|---|---|
+| title | Home page title |
+| description | Home page description |
+| author | Author |
+| agents | AutoDocAgent instance array |
+| outputDir | Output directory |
+| templateDir | Ejs template directory. It will use the [default template](https://github.com/Haixiang6123/node-autodoc/tree/main/lib/templates) if ignore it |
+
+### renderPage
+
+Render current API doc. No parameters.
+
+```js
+agent.renderPage()
 ```
