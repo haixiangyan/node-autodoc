@@ -1,5 +1,5 @@
 import path from 'path';
-import AutoDocAgent from '../../../dist';
+import AutoDocAgent from 'node-autodoc';
 import app from '../../app';
 
 export const outputDir = path.resolve(__dirname, '../../autodoc');

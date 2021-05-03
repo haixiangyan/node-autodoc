@@ -1,4 +1,4 @@
-import AutoDocAgent from '../../dist';
+import AutoDocAgent from 'node-autodoc';
 import {
   outputDir, usersAgent, booksAgent,
 } from './utils/constants';
