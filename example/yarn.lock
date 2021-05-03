@@ -3217,9 +3217,9 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npm.taobao.org/nice-try/download/nice-try-1.0.5.tgz?cache=0&sync_timestamp=1614510016909&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnice-try%2Fdownload%2Fnice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
 
-node-autodoc@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.nlark.com/node-autodoc/download/node-autodoc-0.0.2.tgz?cache=0&sync_timestamp=1620017423857&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-autodoc%2Fdownload%2Fnode-autodoc-0.0.2.tgz#3b8ddd607d62184cd55df3a6895d455f40db2d9e"
+node-autodoc@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.nlark.com/node-autodoc/download/node-autodoc-0.0.5.tgz?cache=0&sync_timestamp=1620021919423&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-autodoc%2Fdownload%2Fnode-autodoc-0.0.5.tgz#20caa5bbda0db26703569f2fe19cb2386255be8c"
   dependencies:
     ejs "^3.1.6"
     fs-extra "^9.1.0"

@@ -13,7 +13,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "node-autodoc": "^0.0.2"
+    "node-autodoc": "^0.0.5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.0",
