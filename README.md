@@ -209,6 +209,19 @@ AutoDocAgent.renderIndex({
 | outputDir | Output directory |
 | templateDir | Ejs template directory. It will use the [default template](https://github.com/Haixiang6123/node-autodoc/tree/main/lib/templates) if ignore it |
 
+### restful method
+
+When calling the restful method, it's calling the restful method of supertest. The only difference is the second parameter.
+
+```js
+agent.get('/users', {
+  title: 'Fetch all users',
+  description: 'To get all user infomation'
+})
+```
+
+`title` and `description` would render as the title and description of current API doc.
+
 ### renderPage
 
 Render current API doc. No parameters.
