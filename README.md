@@ -17,126 +17,44 @@ It renders the API documentation according to the input and output of each http 
 
 ![](./screenshot/flow.png)
 
-## How to use
+## Example
 
-Let's say we have an express web app:
+There is also an example inside the repo. Check [this](https://github.com/Haixiang6123/node-autodoc/tree/main/example) out!
 
-```js
-// app.js
-const app = express();
+## Render mode
 
-app.get('/users', (req, res) => {
-  res.send({ msg: 'get success', code: 0 });
-});
+### Default template
 
-app.post('/users', (req, res) => {
-  res.json({ msg: 'post success', code: 0 });
-});
+It renders the documentation using ejs template engine by default.
 
-app.get('/books', (req, res) => {
-  res.send({ msg: 'get success', code: 0 });
-});
+### Custom template
 
-app.post('/books', (req, res) => {
-  res.json({ msg: 'post success', code: 0 });
-});
-```
+If you have better templates, you can specify the `templateDir` to let AutoDoc render your templates. 
+You may want to check out [the default templates](https://github.com/Haixiang6123/node-autodoc/tree/main/lib/templates) first, then design your templates.
 
-Then, prepare your http request agent, just like how the "supertest" package does:
+### Custom render function
+
+**If you have better idea to render the API doc page, you can also pass a callback in `renderPage` to make your custom renders.**
 
 ```js
-// constants.js
-import AutoDocAgent from 'node-autodoc';
-
-// API documentation output dir 
-const outputDir = path.join(__dirname, './templates');
-// ejs templates dir
-const templateDir = path.join(__dirname, './autodoc');
-
-// Make a smart agent just like how the "supertest" package does
-const usersAgent = new AutoDocAgent(app, {
-  outputFilename: 'users.html',
-  title: 'Users API Documentation',
-  description: 'A small and simple documentation for how to deal with /users api',
-  outputDir,
-  templateDir,
-});
-```
-
-Then, write a simple test case to test your API and generate an API documentation page:
-
-```js
-// users.test.js
-describe('test /users API', () => {
-  // A simple test case
-  it('should get all the users', (done) => {
-    usersAgent
-      .get('/users?a=1&b=2', { title: 'Get all users', description: 'Send a get request to get all users from the server' })
-      .end((err) => {
-        // Some assertion here...
-        done();
-      });
-  });
-
-  // Render curent documenation page to the given 'outputDir'
-  afterAll(() => booksAgent.renderPage());
+agent.renderPage((currentAgent) => {
+  // Assemable your render data
+  const myRenderData = {
+    title: currentAgent.title,
+    description: currentAgent.description,
+    docMetaCollection: currentAgent.docMetaCollection,
+    tableOfContent: currentAgent.docMetaCollection.map((docMeta) => ({
+      link: `#${encodeURIComponent(docMeta.title)}`,
+      title: docMeta.title,
+    })),
+  };
+  
+  // Your render function
+  customRender(myRenderData);
 })
 ```
 
-The API doc page would be like this:
-
-![](screenshot/users.png)
-
-In the end, call the `AutoDocAgent.renderIndex()` in the `teardown.js` file to render the home page.
-
-```js
-// teardown.js
-import AutoDocAgent from 'node-autodoc';
-import {
-  outputDir, templateDir, usersAgent, booksAgent,
-} from './utils/constants';
-
-const agents = [booksAgent, usersAgent];
-
-module.exports = async () => {
-  AutoDocAgent.renderIndex({
-    title: 'My API Documentation',
-    description: 'This is my first documentation for testing, haha~',
-    author: 'Haixiang',
-    agents,
-    outputDir,
-    templateDir,
-  });
-};
-```
-
-The home page would be like this:
-
-![](screenshot/home.png)
-
-## Example
-
-There is also an example inside the repo. Check this folder [/example](https://github.com/Haixiang6123/node-autodoc/tree/main/example) out.
-
-Here's the example structure:
-
-```
-├── app.js          // express web app
-├── autodoc         // documenation output directory
-├── bin             // start entry
-├── jest.config.js  // config, add the setup.js and tearndown.js to here
-├── public
-├── routes          // all your apis
-│   ├── books.js
-│   ├── index.js
-│   └── users.js
-├── test
-│   ├── setup.js    // clear the /autodoc directory first
-│   ├── unit        // unit test cases, each one will render an api doc page
-│   ├── utils       // some useful constants here
-│   └── teardown.js // render home page
-└── yarn.lock
-```
+**A very common case would be like: Send all the `docMetaCollection` to your documentation server and generate your own documentation website.**
 
 ## API
 
@@ -224,8 +142,28 @@ agent.get('/users', {
 
 ### renderPage
 
-Render current API doc. No parameters.
+Render current API doc.
 
 ```js
 agent.renderPage()
+```
+
+**If you have better idea to render the API doc page, you can also put a callback in there to make your custom renders.**
+
+```js
+agent.renderPage((currentAgent) => {
+  // Assemable your render data
+  const myRenderData = {
+    title: currentAgent.title,
+    description: currentAgent.description,
+    docMetaCollection: currentAgent.docMetaCollection,
+    tableOfContent: currentAgent.docMetaCollection.map((docMeta) => ({
+      link: `#${encodeURIComponent(docMeta.title)}`,
+      title: docMeta.title,
+    })),
+  };
+  
+  // Your render function
+  customRender(myRenderData);
+})
 ```
