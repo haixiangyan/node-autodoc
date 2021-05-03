@@ -1,9 +1,10 @@
-import { ejsTemplateDir, outputHtmlDir } from '../../lib/constants';
+import path from 'path';
+import { ejsTemplateDir } from '../../lib/constants';
 import AutoDocAgent from '../../lib';
 import app from './app';
 
 export const templateDir = ejsTemplateDir;
-export const outputDir = outputHtmlDir;
+export const outputDir = path.resolve(__dirname, '../../docs');
 
 export const usersAgent = new AutoDocAgent(app, {
   outputFilename: 'users.html',
