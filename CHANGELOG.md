@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Haixiang6123/node-autodoc/compare/v0.0.3...v0.0.4) (2021-05-03)
+
+
+### Features
+
+* add build script ([5c83c82](https://github.com/Haixiang6123/node-autodoc/commit/5c83c824e3b7f10ba06853ed63feed2d8ac98281))
+* change package files ([c5b44fc](https://github.com/Haixiang6123/node-autodoc/commit/c5b44fca532f5a230f26eaa6e4c2f0c0be9d5616))
+* update release script ([deafd40](https://github.com/Haixiang6123/node-autodoc/commit/deafd40ea06dd293129f89fd932d5dc9d56919fe))
+* use node-autodoc ([5762fe7](https://github.com/Haixiang6123/node-autodoc/commit/5762fe78d6de5ffb6229d8a40577d0f00984f0b3))
+
 ### 0.0.3 (2021-05-03)
 
 
