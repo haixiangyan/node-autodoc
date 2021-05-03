@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/Haixiang6123/node-autodoc/compare/v0.0.5...v0.0.6) (2021-05-03)
+
+
+### Features
+
+* add custom render page callback ([18e3845](https://github.com/Haixiang6123/node-autodoc/commit/18e3845f2f1aaccfc3fdf6124586da0b96d92535))
+* add customize guide ([ab63700](https://github.com/Haixiang6123/node-autodoc/commit/ab63700873ea6d3254f8afb0bd507c8ca575e031))
+* add docs directory ([a3cc0eb](https://github.com/Haixiang6123/node-autodoc/commit/a3cc0eb7b06dd2598564dc86181d0fa3d17b03a3))
+* add flow and API ([c933470](https://github.com/Haixiang6123/node-autodoc/commit/c933470f6312b982ce91252d64e6c51b91b343a3))
+* add restful method docs ([84a3b44](https://github.com/Haixiang6123/node-autodoc/commit/84a3b44c628bff0cf32af59145b5cfa834b5ec2f))
+* separate Example README.md ([fd7b345](https://github.com/Haixiang6123/node-autodoc/commit/fd7b3455f4faff375273ed0bf79f57120cb1267c))
+* update node-autodoc package ([e86d741](https://github.com/Haixiang6123/node-autodoc/commit/e86d741f617b285a77ca4fca9d68bca47dc5a3ee))
+* update README.md ([bffd1df](https://github.com/Haixiang6123/node-autodoc/commit/bffd1df188a30359ad9ef56a346442d86d7a2664))
+
 ### [0.0.5](https://github.com/Haixiang6123/node-autodoc/compare/v0.0.4...v0.0.5) (2021-05-03)
 
 
