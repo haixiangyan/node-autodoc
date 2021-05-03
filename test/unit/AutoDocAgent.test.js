@@ -59,4 +59,18 @@ describe('test some features of AutoDocAgent', () => {
     expect(agent.getDocMeta('x', 'y')).toBeNull();
     expect(() => agent.renderPage()).toThrow('No output file name');
   });
+
+  it('will return current agent when custom render page', (done) => {
+    usersAgent
+      .post('/users?a=1&b=2', { title: 'Post a user', description: 'Create a user and add it to the database' })
+      .send({ name: 'Jack', password: '123' })
+      .end(() => {
+        const mockCallback = jest.fn(() => (agent) => expect(agent.docMetaCollection).toHaveLength(1));
+        usersAgent.renderPage(mockCallback);
+
+        expect(mockCallback).toBeCalled();
+        expect(mockCallback).toBeCalledWith(usersAgent);
+        done();
+      });
+  });
 });
