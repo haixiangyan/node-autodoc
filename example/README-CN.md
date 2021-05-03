@@ -1,17 +1,17 @@
-# AutoDoc example
+# AutoDoc 样例
 
-[简体中文](./README-CN.md)
+[English](./README.md)
 
-## API documentation preview
+## API 文档预览
 
-Check [this](http://yanhaixiang.com/node-autodoc/) out.
+点击 [此处](http://yanhaixiang.com/node-autodoc/) 来预览.
 
-Ugly, huh? You can also use customized templates or render function to generate the API documentation.
-[See this](https://github.com/Haixiang6123/node-autodoc#render-mode).
+是不是很丑陋？你可以使用自定义模板和自定义函数来生成你想要的 API 文档。
+[具体可见](https://github.com/Haixiang6123/node-autodoc#render-mode).
 
-## Structure
+## 文件结构
 
-Here's the example structure:
+下面是样例的文件结构
 
 ```
 ├── app.js          // express web app
@@ -31,9 +31,9 @@ Here's the example structure:
 └── yarn.lock
 ```
 
-## How to use
+## 怎么用
 
-Let's say we have an express web app:
+比如现在我们有一个 Express 或者 KOA 的应用 app：
 
 ```js
 // app.js
@@ -56,7 +56,7 @@ app.post('/books', (req, res) => {
 });
 ```
 
-Then, prepare your http request agent, just like how the "supertest" package does:
+先准备你的 agent。
 
 ```js
 // constants.js
@@ -77,7 +77,7 @@ const usersAgent = new AutoDocAgent(app, {
 });
 ```
 
-Then, write a simple test case to test your API and generate an API documentation page:
+然后，写一个简单的测试用例来测试你的接口，并渲染当前 API 文档。
 
 ```js
 // users.test.js
@@ -97,11 +97,11 @@ describe('test /users API', () => {
 })
 ```
 
-The API doc page would be like this:
+当前 API 文档就会像生成出来：
 
 ![](../screenshot/users.png)
 
-In the end, call the `AutoDocAgent.renderIndex()` in the `teardown.js` file to render the home page.
+最后，在 `teardown.js` 调用 `AutoAgent.renderIndex()` 来渲染首页。
 
 ```js
 // teardown.js
@@ -124,6 +124,6 @@ module.exports = async () => {
 };
 ```
 
-The home page would be like this:
+首页也能一并生成：
 
 ![](../screenshot/home.png)

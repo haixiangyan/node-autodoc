@@ -3,6 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/Haixiang6123/node-autodoc/badge.svg?branch=main)](https://coveralls.io/github/Haixiang6123/node-autodoc?branch=main)
 [![Build Status](https://www.travis-ci.com/Haixiang6123/node-autodoc.svg?branch=main)](https://www.travis-ci.com/Haixiang6123/node-autodoc)
 
+[简体中文](./README-CN.md)
+
 A test-driven generator for API documentation. Inspired by [autodoc](https://github.com/r7kamura/autodoc) and [supertest](https://www.npmjs.com/package/supertest).
 
 ## Why need this
@@ -129,7 +131,8 @@ AutoDocAgent.renderIndex({
 
 ### restful method
 
-When calling the restful method, it's calling the restful method of supertest. The only difference is the second parameter.
+When calling the restful method, it's calling the restful method of supertest. 
+The only difference is that you can pass the second parameter to render title and description.
 
 ```js
 agent.get('/users', {
@@ -137,8 +140,6 @@ agent.get('/users', {
   description: 'To get all user infomation'
 })
 ```
-
-`title` and `description` would render as the title and description of current API doc.
 
 ### renderPage
 
