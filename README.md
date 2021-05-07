@@ -5,7 +5,7 @@
 
 [简体中文](./README-CN.md)
 
-A test-driven generator for API documentation. Inspired by [autodoc](https://github.com/r7kamura/autodoc) and [supertest](https://www.npmjs.com/package/supertest).
+An API documentation generator driven by unit testing. Inspired by [autodoc](https://github.com/r7kamura/autodoc) and [supertest](https://www.npmjs.com/package/supertest).
 
 ## Why need this
 
