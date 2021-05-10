@@ -56,5 +56,5 @@ describe('/users API', () => {
       });
   });
 
-  afterAll(() => usersAgent.renderPage('users.html'));
+  afterAll(() => usersAgent.renderPage());
 });
