@@ -1,7 +1,7 @@
 # node-autodoc
 
 [![Coverage Status](https://coveralls.io/repos/github/Haixiang6123/node-autodoc/badge.svg?branch=main)](https://coveralls.io/github/Haixiang6123/node-autodoc?branch=main)
-[![Build Status](https://www.travis-ci.com/Haixiang6123/node-autodoc.svg?branch=main)](https://www.travis-ci.com/Haixiang6123/node-autodoc)
+[![Build Status](https://www.travis-ci.com/haixiangyan/node-autodoc.svg?branch=main)](https://www.travis-ci.com/haixiangyan/node-autodoc)
 ![](https://img.shields.io/npm/l/node-autodoc)
 ![](https://img.shields.io/npm/v/node-autodoc)
 
